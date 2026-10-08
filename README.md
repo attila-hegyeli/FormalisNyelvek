@@ -24,6 +24,16 @@ Starter projektre azért van szükség, hogy egységes struktúrájú projektje 
 
 A projekt leklónozása után töröljük ki az összes starter projektet, kivéve azt, amit választottunk. Ha például Pythonra esik a választás, töröljük ki az összes olyan mappát, amely nem a `python-starter` mappa.
 
+## 1. feladat: DFA szimuláció
+
+A Python starterből a `python-starter` mappában futtatható a DFA-szimuláció:
+
+```bash
+python -m project --input automata.txt --output eredmeny.txt --check a,ab,abc
+```
+
+Az automata fájl első négy sora rendre az állapotokat, az ábécé elemeit, a kezdőállapotot és a végállapotokat tartalmazza, szóközökkel elválasztva. Az ezt követő sorok átmenetek `forrás szimbólum cél` formában. A `--check` kapcsoló vesszővel elválasztott szavakat fogad, az eredményfájlban pedig minden szóhoz külön sorban `IGEN` vagy `NEM` szerepel.
+
 ## Python nyelv esetén
 
 Python esetén a `python-starter` nevű mappa tartalmaz egy kiinduló projektet, ami használható a feladatok megoldására.
