@@ -34,6 +34,16 @@ python -m project --input automata.txt --output eredmeny.txt --check a,ab,abc
 
 Az automata fájl első négy sora rendre az állapotokat, az ábécé elemeit, a kezdőállapotot és a végállapotokat tartalmazza, szóközökkel elválasztva. Az ezt követő sorok átmenetek `forrás szimbólum cél` formában. A `--check` kapcsoló vesszővel elválasztott szavakat fogad, az eredményfájlban pedig minden szóhoz külön sorban `IGEN` vagy `NEM` szerepel.
 
+## 2. feladat: automata determinizálása
+
+Az automata determinisztikus változata az alábbi paranccsal készíthető el:
+
+```bash
+python -m project --input automata.txt --output determinisztikus.txt --det
+```
+
+A bemenetben szereplő állapot- és ábécéhivatkozásokat a program ellenőrzi. Az eredményfájl az elérhető determinisztikus állapotokat `s0`, `s1`, ... nevekkel írja ki; az átmenetek ábécé szerinti sorrendben jelennek meg.
+
 ## Python nyelv esetén
 
 Python esetén a `python-starter` nevű mappa tartalmaz egy kiinduló projektet, ami használható a feladatok megoldására.
