@@ -39,7 +39,7 @@ class MiniProblem(Problem):
         if not accepting.issubset(states):
             raise ValueError('Every accepting state must be listed among the states.')
 
-        delta = {}
+        ndelta = {}
         for line in lines[4:]:
             parts = line.split()
             if not parts:
@@ -51,11 +51,30 @@ class MiniProblem(Problem):
                 raise ValueError(f'Transition references an unknown state: {line!r}')
             if sym not in alphabet:
                 raise ValueError(f'Transition uses an unknown symbol: {line!r}')
-            if delta.get((src, sym), dst) != dst:
-                raise ValueError(f'The automaton is not deterministic: {line!r}')
-            delta[(src, sym)] = dst
+            ndelta.setdefault((src, sym), set()).add(dst)
 
         symbols = sorted(set(alphabet))
+
+        if all(len(d) == 1 for d in ndelta.values()):
+            delta = {k: next(iter(v)) for k, v in ndelta.items()}
+        else:
+            # Nemdeterminisztikus bemenet: előbb részhalmaz-konstrukcióval determinizáljuk.
+            start = frozenset([initial])
+            ids = {start: 'q0'}
+            delta = {}
+            todo = deque([start])
+            while todo:
+                cur = todo.popleft()
+                for sym in symbols:
+                    nxt = frozenset(t for s in cur for t in ndelta.get((s, sym), ()))
+                    if not nxt:
+                        continue
+                    if nxt not in ids:
+                        ids[nxt] = f'q{len(ids)}'
+                        todo.append(nxt)
+                    delta[(ids[cur], sym)] = ids[nxt]
+            accepting = {n for x, n in ids.items() if x & accepting}
+            initial = 'q0'
 
         # Keep only the states reachable from the initial state.
         reachable = {initial}

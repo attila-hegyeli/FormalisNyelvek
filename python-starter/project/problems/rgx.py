@@ -12,7 +12,7 @@ COUNT_PATTERNS = [
     re.compile(r'^10-15 '),
     re.compile(r'^10-15 10:18:51\.'),
     re.compile(r'^[0-9-]+ [0-9]{2}:[0-9]{2}:51\.'),
-    re.compile(H + r'[IDVEFAW] lowmemorykiller\b'),
+    re.compile(r'lowmemorykiller'),
     re.compile(r'^[0-9-]+ 10:18:51\.[0-9]+ +221 '),
     re.compile(H + r'E '),
     re.compile(H + r'W PackageManager\b'),
