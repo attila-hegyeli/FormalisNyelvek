@@ -16,7 +16,7 @@ COUNT_PATTERNS = [
     re.compile(r'^[0-9-]+ 10:18:51\.[0-9]+ +221 '),
     re.compile(H + r'E '),
     re.compile(H + r'W PackageManager\b'),
-    re.compile(H + r'D ExoPlayer'),
+    re.compile(H + r'D \S*ExoPlayer'),
     re.compile(H + r'[EW] .*\.java:'),
 ]
 THREAD = re.compile(r'Thread')
