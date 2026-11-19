@@ -133,5 +133,5 @@ class MiniProblem(Problem):
             ' '.join(out_finals),
         ] + [f'{a} {b} {c}' for a, b, c in transitions]
 
-        with open(args.output, 'w', encoding='utf-8') as output_file:
+        with open(args.output, 'w', encoding='utf-8', newline='\n') as output_file:
             output_file.write('\n'.join(output))

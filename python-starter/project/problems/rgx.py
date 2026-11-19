@@ -41,7 +41,7 @@ class RgxProblem(Problem):
             raise ValueError(f'Unknown regex task: {args.rgx}')
         output = solvers[args.rgx](lines)
 
-        with open(args.output, 'w', encoding='utf-8') as f:
+        with open(args.output, 'w', encoding='utf-8', newline='\n') as f:
             f.write('\n'.join(output))
 
     @staticmethod
