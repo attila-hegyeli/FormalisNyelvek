@@ -7,4 +7,4 @@ s0 1 s2
 s1 0 s3
 s1 1 s3
 s2 0 s3
-s2 1 s3
+s2 1 s3bash
